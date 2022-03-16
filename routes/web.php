@@ -2,13 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\AccountsController;
-use App\Http\Controllers\EventsController;
+use App\Http\Controllers\TicketController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('reset', [AccountsController::class, 'reset']);
-Route::post('event', [EventsController::class, 'event']);
-Route::get('balance/{account_id?}', [AccountsController::class, 'balance']);
+Route::post('createTicket', [TicketController::class, 'create']);
+Route::get('getQuantities', [TicketController::class, 'quantities']);
+Route::get('getRandomTicket', [TicketController::class, 'randomTIcket']);
