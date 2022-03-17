@@ -33,11 +33,30 @@ class TicketRepository {
 
     public function quantity()
     {
-        return DB::select('SELECT count(1) as total, (SELECT COUNT(1) FROM tickets as t) as peoples  FROM tickets');
+        $response = DB::select('
+            SELECT 
+                count(1) as total, 
+                (
+                    SELECT COUNT(DISTINCT t.name) FROM tickets as t GROUP BY t.name
+                ) as peoples  
+            FROM tickets
+        ');
+
+        if (!$response) {
+            return false;
+        }
+
+        return $response[0];
     }
 
     public function random()
     {
-        return $this->model->inRandomOrder()->limit(1)->get();
+        $response = $this->model->inRandomOrder()->limit(1)->get();
+
+        if (!$response) {
+            return false;
+        }
+
+        return $response[0];
     }
 }
