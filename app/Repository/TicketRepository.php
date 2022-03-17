@@ -17,11 +17,18 @@ class TicketRepository {
 
     public function save($tickets)
     {
-        $model = new Ticket;
+        $return = true;
+        foreach ($tickets as $key => $ticket) {
+            $model = new Ticket();
 
-        $model->fill($tickets);
+            $model->fill($ticket);
+    
+            if (!$model->save()) {
+                $return = false;
+            }
+        }
 
-        return $model->save();
+        return $return;
     }
 
     public function quantity()

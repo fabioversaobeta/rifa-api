@@ -71,4 +71,15 @@ class TicketController extends Controller
 
         return response('error', 404);
     }
+
+    private function formatJson($str)
+    {
+        $strJson = json_encode($str, JSON_PRETTY_PRINT);
+        $strJson = preg_replace( "/\r|\n/", "", $strJson);
+        $strJson = str_replace("       ", "", $strJson);
+        $strJson = str_replace("    ", "", $strJson);
+        $strJson = str_replace("{ ", "{", $strJson);
+
+        return $strJson;
+    }
 }
