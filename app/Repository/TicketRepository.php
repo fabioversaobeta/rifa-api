@@ -51,9 +51,16 @@ class TicketRepository {
 
     public function random()
     {
+        $list = $this->model->all();
+        $listCount = $list->count();
+
+        if ($listCount == 0) {
+            return false;
+        }
+
         $response = $this->model->inRandomOrder()->limit(1)->get();
 
-        if (!$response) {
+        if (!isset($response[0])) {
             return false;
         }
 
