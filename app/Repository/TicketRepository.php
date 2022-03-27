@@ -22,7 +22,7 @@ class TicketRepository {
             $model = new Ticket();
 
             $model->fill($ticket);
-    
+
             if (!$model->save()) {
                 $return = false;
             }

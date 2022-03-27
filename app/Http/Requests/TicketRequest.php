@@ -25,7 +25,7 @@ class TicketRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'phone' => 'required|min:11|max:11|integer',
+            'phone' => 'required|integer',
             'quantity' => 'required|integer',
         ];
     }

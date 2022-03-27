@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TicketRequest;
 use Illuminate\Http\Request;
 use App\Services\TicketService;
 
@@ -19,7 +20,7 @@ class TicketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create(TicketRequest $request)
     {
         $name = $request->name;
         $phone = $request->phone;
