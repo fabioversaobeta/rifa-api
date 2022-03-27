@@ -37,7 +37,7 @@ class TicketRepository {
             SELECT 
                 count(1) as total, 
                 (
-                    SELECT COUNT(DISTINCT t.name) FROM tickets as t GROUP BY t.name
+                    COALESCE(SELECT COUNT(DISTINCT t.name) FROM tickets as t GROUP BY t.name, 0)
                 ) as peoples  
             FROM tickets
         ');
