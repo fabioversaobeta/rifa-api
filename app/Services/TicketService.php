@@ -58,4 +58,9 @@ class TicketService implements TicketInterface {
 
         return $randomTicket;
     }
+
+    public function reset()
+    {
+        return $this->ticketRepository->reset();
+    }
 }

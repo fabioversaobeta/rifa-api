@@ -66,4 +66,9 @@ class TicketRepository {
 
         return $response[0];
     }
+
+    public function reset()
+    {
+        return $this->model::truncate();
+    }
 }

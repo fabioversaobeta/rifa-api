@@ -9,4 +9,5 @@ interface TicketInterface
     public function createTicket(string $name, int $phone, int $quantity);
     public function getQuantities();
     public function getRandomTicket();
+    public function reset();
 }

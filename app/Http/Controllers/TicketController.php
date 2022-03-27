@@ -73,6 +73,17 @@ class TicketController extends Controller
         return response('error', 404);
     }
 
+    public function reset()
+    {
+        $reset = $this->ticketService->reset();
+
+        if ($reset) {
+            return response('OK', 200);
+        }
+
+        return response('error', 404);
+    }
+
     private function formatJson($str)
     {
         $strJson = json_encode($str, JSON_PRETTY_PRINT);
