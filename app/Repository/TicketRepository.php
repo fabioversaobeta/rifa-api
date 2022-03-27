@@ -36,8 +36,8 @@ class TicketRepository {
         $response = DB::select('
             SELECT 
                 count(1) as total, 
-                (
-                    COALESCE(SELECT COUNT(DISTINCT t.name) FROM tickets as t GROUP BY t.name, 0)
+                COALESCE(
+                    (SELECT COUNT(DISTINCT t.name) FROM tickets as t GROUP BY t.name), 0
                 ) as peoples  
             FROM tickets
         ');
