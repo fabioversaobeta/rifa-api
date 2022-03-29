@@ -42,6 +42,15 @@ class TicketRepository {
         //     FROM tickets
         // ');
 
+        // $response = DB::select('
+        //     SELECT 
+        //         count(1) as total, 
+        //         COALESCE(
+        //             SELECT SUM(SELECT COUNT(DISTINCT t.name) FROM tickets as t GROUP BY t.name), 0
+        //         ) as peoples  
+        //     FROM tickets
+        // ');        
+
         $responseTotal = DB::select('SELECT COUNT(1) as total FROM tickets');
 
         $responsePeoples = DB::select('SELECT COUNT(DISTINCT name) as peoples FROM tickets');
